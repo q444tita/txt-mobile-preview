@@ -2,7 +2,7 @@
   "name": "txt-mobile-preview",
   "displayName": "TXT手机预览",
   "description": "以手机样式预览 .txt 文件，所有参数通过 VSCode 设置控制",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.125.0"
   },
