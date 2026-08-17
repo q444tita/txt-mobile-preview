@@ -1,0 +1,117 @@
+{
+  "name": "txt-mobile-preview",
+  "displayName": "TXT手机预览",
+  "description": "以手机样式预览 .txt 文件，所有参数通过 VSCode 设置控制",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.125.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "txtMobilePreview.preview",
+        "title": "TXT手机预览",
+        "icon": "$(device-mobile)"
+      },
+      {
+        "command": "txtMobilePreview.resetSettings",
+        "title": "重置手机预览设置为默认值",
+        "icon": "$(undo)"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "txtMobilePreview.preview",
+          "group": "navigation",
+          "when": "resourceExtname == .txt"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "txtMobilePreview.preview",
+          "group": "navigation",
+          "when": "resourceExtname == .txt"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "TXT手机预览",
+      "properties": {
+        "txtMobilePreview.phoneSize": {
+          "type": "string",
+          "enum": [
+            "375x667",
+            "390x844",
+            "430x932",
+            "360x780",
+            "412x915"
+          ],
+          "enumDescriptions": [
+            "iPhone SE",
+            "iPhone 12/13/14",
+            "iPhone 14 Pro Max",
+            "Android 小屏",
+            "Android 大屏"
+          ],
+          "default": "390x844",
+          "description": "手机屏幕尺寸（宽x高）"
+        },
+        "txtMobilePreview.lineHeight": {
+          "type": "number",
+          "minimum": 1.0,
+          "maximum": 3.0,
+          "default": 1.7,
+          "description": "行间距（倍数）"
+        },
+        "txtMobilePreview.fontSize": {
+          "type": "number",
+          "minimum": 10,
+          "maximum": 30,
+          "default": 16,
+          "description": "字体大小（像素）"
+        },
+        "txtMobilePreview.backgroundColor": {
+          "type": "string",
+          "format": "color",
+          "default": "#ffffff",
+          "description": "预览背景颜色"
+        },
+        "txtMobilePreview.textColor": {
+          "type": "string",
+          "format": "color",
+          "default": "#1d1d1f",
+          "description": "字体颜色"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.125.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "24.x",
+    "eslint": "^10.5.0",
+    "@vscode/test-cli": "^0.0.15",
+    "@vscode/test-electron": "^3.0.0"
+  },
+  "overrides": {
+    "diff": "^8.0.4",
+    "serialize-javascript": "^7.0.6"
+  },
+  "author": "强猿科技",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/q444tita/txt-mobile-preview.git"
+  },
+  "license": "MIT"
+}
